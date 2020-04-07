@@ -11,10 +11,10 @@ type B = String
 appendA :: A -> A
 appendA = (++ "_APPENDED")
 
-b :: B
-b = "B"
+testB :: B
+testB = "B"
 
-test = appendA b
+test = appendA testB
 
 --
 
@@ -454,3 +454,18 @@ eval (Add x y) = (eval x) + (eval y)
 printExpr :: Expr -> String
 printExpr (Lit int) = show int
 printExpr (Add x y) = (printExpr x) ++ " + " ++ (printExpr y)
+
+--
+
+unfold :: (a -> Maybe (a,b,a)) -> a -> BinaryTree b
+unfold aToM a = case aToM a of
+  Nothing          -> Leaf
+  Just (la, b, ra) -> Node (unfold aToM la) b (unfold aToM ra)
+
+treeBuild :: Integer -> BinaryTree Integer
+treeBuild n =
+  unfold
+    (\a -> if a >= n
+           then Nothing
+           else Just (a + 1, a + 1, a + 1))
+    0
