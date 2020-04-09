@@ -1,3 +1,2 @@
-**/*.hi
-**/*.o
-.stack-work
+.stack-work/
+*~

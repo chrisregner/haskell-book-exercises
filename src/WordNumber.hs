@@ -1,4 +1,5 @@
-module WordNumber where
+module WordNumber (digitToWord, digits, wordNumber) where
+
 import Data.List (intercalate)
 
 digitWords :: [String]
@@ -22,10 +23,11 @@ digitToWord n
   | otherwise        = ""
 
 digits :: Int -> [Int]
-digits num = go num []
-  where go n ds
-          | n > 10    = go (n `div` 10) ([n `rem` 10] ++ ds)
-          | otherwise = n:ds
+digits int = go int []
+  where
+    go n ds
+      | n >= 10   = go (n `div` 10) $ (n `rem` 10):ds
+      | otherwise = n:ds
 
 wordNumber :: Int -> String
-wordNumber = intercalate " " . map digitToWord . digits
+wordNumber = intercalate "-" . map digitToWord . digits
