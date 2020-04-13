@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 6537d74af92e0b9db3355a3191b86e38aa516ead55a26015716b9bdb8ad39624
+-- hash: 1e286830a9c7970c0a1f602e4446af05cda8a83902c082b8862600261344c354
 
 name:           haskell-book-exercises
 version:        0.1.0.0
@@ -29,6 +29,7 @@ library
   exposed-modules:
       Ch14
       Ch15
+      Ch16
       Lib
       WordNumber
   other-modules:
